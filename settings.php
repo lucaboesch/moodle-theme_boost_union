@@ -58,28 +58,36 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $tab = new admin_settingpage('theme_boost_union_look',
                 get_string('configtitlelook', 'theme_boost_union', null, true),
                 'theme/boost_union:configure');
-        $ADMIN->add('theme_boost_union', $tab);
+        if (!class_exists('\core_admin\output\theme_selector')) {
+            $ADMIN->add('theme_boost_union', $tab);
+        }
 
         // Create Feel settings page
         // (and allow users with the theme/boost_union:configure capability to access it).
         $tab = new admin_settingpage('theme_boost_union_feel',
                 get_string('configtitlefeel', 'theme_boost_union', null, true),
                 'theme/boost_union:configure');
-        $ADMIN->add('theme_boost_union', $tab);
+        if (!class_exists('\core_admin\output\theme_selector')) {
+            $ADMIN->add('theme_boost_union', $tab);
+        }
 
         // Create Content settings page
         // (and allow users with the theme/boost_union:configure capability to access it).
         $tab = new admin_settingpage('theme_boost_union_content',
                 get_string('configtitlecontent', 'theme_boost_union', null, true),
                 'theme/boost_union:configure');
-        $ADMIN->add('theme_boost_union', $tab);
+        if (!class_exists('\core_admin\output\theme_selector')) {
+            $ADMIN->add('theme_boost_union', $tab);
+        }
 
         // Create Functionality settings page
         // (and allow users with the theme/boost_union:configure capability to access it).
         $tab = new admin_settingpage('theme_boost_union_functionality',
                 get_string('configtitlefunctionality', 'theme_boost_union', null, true),
                 'theme/boost_union:configure');
-        $ADMIN->add('theme_boost_union', $tab);
+        if (!class_exists('\core_admin\output\theme_selector')) {
+            $ADMIN->add('theme_boost_union', $tab);
+        }
 
         // Create Flavours settings page as external page
         // (and allow users with the theme/boost_union:configure capability to access it).
@@ -87,7 +95,9 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
                 get_string('configtitleflavours', 'theme_boost_union', null, true),
                 new moodle_url('/theme/boost_union/flavours/overview.php'),
                 'theme/boost_union:configure');
-        $ADMIN->add('theme_boost_union', $flavourspage);
+        if (!class_exists('\core_admin\output\theme_selector')) {
+            $ADMIN->add('theme_boost_union', $flavourspage);
+        }
 
         // Create Smart Menus settings page as external page.
         // (and allow users with the theme/boost_union:configure capability to access it).
@@ -95,7 +105,9 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
                 get_string('smartmenus', 'theme_boost_union', null, true),
                 new moodle_url('/theme/boost_union/smartmenus/menus.php'),
                 'theme/boost_union:configure');
-        $ADMIN->add('theme_boost_union', $smartmenuspage);
+        if (!class_exists('\core_admin\output\theme_selector')) {
+            $ADMIN->add('theme_boost_union', $smartmenuspage);
+        }
     }
 
     // Create full settings page structure.
@@ -1198,8 +1210,10 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $page->add($tab);
 
 
-        // Add settings page to the admin settings category.
-        $ADMIN->add('theme_boost_union', $page);
+        if (!class_exists('\core_admin\output\theme_selector')) {
+            // Add settings page to the admin settings category.
+            $ADMIN->add('theme_boost_union', $page);
+        }
 
         // Create Feel settings page with tabs
         // (and allow users with the theme/boost_union:configure capability to access it).
@@ -1637,8 +1651,10 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $page->add($tab);
 
 
-        // Add settings page to the admin settings category.
-        $ADMIN->add('theme_boost_union', $page);
+        if (!class_exists('\core_admin\output\theme_selector')) {
+            // Add settings page to the admin settings category.
+            $ADMIN->add('theme_boost_union', $page);
+        }
 
         // Create Content settings page with tabs
         // (and allow users with the theme/boost_union:configure capability to access it).
@@ -2486,8 +2502,10 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $page->add($tab);
 
 
-        // Add settings page to the admin settings category.
-        $ADMIN->add('theme_boost_union', $page);
+        if (!class_exists('\core_admin\output\theme_selector')) {
+            // Add settings page to the admin settings category.
+            $ADMIN->add('theme_boost_union', $page);
+        }
 
         // Create Functionality settings page with tabs
         // (and allow users with the theme/boost_union:configure capability to access it).
@@ -2563,8 +2581,10 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $page->add($tab);
 
 
-        // Add settings page to the admin settings category.
-        $ADMIN->add('theme_boost_union', $page);
+        if (!class_exists('\core_admin\output\theme_selector')) {
+            // Add settings page to the admin settings category.
+            $ADMIN->add('theme_boost_union', $page);
+        }
 
 
         // Create Flavours settings page as external page
@@ -2573,7 +2593,9 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
                 get_string('configtitleflavours', 'theme_boost_union', null, true),
                 new moodle_url('/theme/boost_union/flavours/overview.php'),
                 'theme/boost_union:configure');
-        $ADMIN->add('theme_boost_union', $flavourspage);
+        if (!class_exists('\core_admin\output\theme_selector')) {
+            $ADMIN->add('theme_boost_union', $flavourspage);
+        }
     }
 
     // Add JS to remember the active admin tab to the page.
