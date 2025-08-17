@@ -36,7 +36,6 @@ use theme_boost_union\smartmenu;
  * Form for editing or adding a smart menu item.
  */
 class smartmenu_edit_form extends \moodleform {
-
     /**
      * Define form elements.
      *

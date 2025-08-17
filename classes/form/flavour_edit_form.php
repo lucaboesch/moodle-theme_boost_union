@@ -44,7 +44,6 @@ require_once($CFG->dirroot.'/cohort/lib.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class flavour_edit_form extends \moodleform {
-
     /**
      * Define form elements.
      *

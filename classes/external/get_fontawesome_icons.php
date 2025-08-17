@@ -35,7 +35,6 @@ use core_external\external_value;
  * Provides the theme_boost_union_get_fontawesome_icons external function.
  */
 class get_fontawesome_icons extends external_api {
-
     /**
      * @var int This constant defines the maximum number of FontAwesome icons.
      *

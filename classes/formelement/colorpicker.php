@@ -41,7 +41,6 @@ require_once($CFG->dirroot.'/lib/form/text.php');
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class colorpicker extends MoodleQuickForm_text implements \core\output\templatable {
-
     use \templatable_form_element {
         export_for_template as export_for_template_base;
     }
