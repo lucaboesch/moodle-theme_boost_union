@@ -6,6 +6,7 @@ Changes
 
 ### Unreleased
 
+* 2026-03-29 - Tests: Add a test to view a user tour
 * 2026-03-28 - Tests: Fix a broken test related to breadcrumbs, resolves #1207
 
 ### v5.1-r9
