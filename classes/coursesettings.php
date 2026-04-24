@@ -318,6 +318,13 @@ class coursesettings {
                 'importtransfercontrolcapa' => 'theme/boost_union:transfercourseheaderduringimport',
                 'restorecontrolledby' => 'theme_boost_union_restore_course_header_settings',
             ],
+            'section0behaviour' => [
+                'options' => self::get_options_with_global_default(
+                    'section0behaviour',
+                    self::get_section0behaviour_options()
+                ),
+                'helpbutton' => true,
+            ],
         ];
     }
 
@@ -570,6 +577,24 @@ class coursesettings {
 
         // Check if the course format is in the exclusion list.
         return in_array($courseformat, $excludedformats);
+    }
+
+
+    /**
+     * Get the options array for course section 0 behaviour setting.
+     *
+     * @return array The options array for section 0 behaviour.
+     */
+    public static function get_section0behaviour_options() {
+        $options = [
+            THEME_BOOST_UNION_SETTING_SECTION0BEHAVIOUR_STANDARD =>
+                get_string('section0behaviourstandard', 'theme_boost_union'),
+            THEME_BOOST_UNION_SETTING_SECTION0BEHAVIOUR_STICKY =>
+                get_string('section0behaviouruncollapsible', 'theme_boost_union'),
+            THEME_BOOST_UNION_SETTING_SECTION0BEHAVIOUR_HIDDEN =>
+                get_string('section0behaviournotshown', 'theme_boost_union'),
+        ];
+        return $options;
     }
 
     /**

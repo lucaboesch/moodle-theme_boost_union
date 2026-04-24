@@ -72,6 +72,7 @@ class after_form_definition {
         define('THEME_BOOST_UNION_COURSESETTINGS_COURSEHEADER_INSERTBEFORE', 'courseformathdr');
         define('THEME_BOOST_UNION_COURSESETTINGS_COURSEIMAGES_INSERTBEFORE1', 'theme_boost_union_course_courseheaderhdr');
         define('THEME_BOOST_UNION_COURSESETTINGS_COURSEIMAGES_INSERTBEFORE2', 'courseformathdr');
+        define('THEME_BOOST_UNION_COURSESETTINGS_SECTION0BEHAVIOUR_INSERTBEFORE', 'courseformathdr');
 
         // Get the course override settings which we handle.
         $coursesettings = coursesettings::get_course_settings_config();
@@ -109,8 +110,13 @@ class after_form_definition {
             }
         }
 
-        // Iterate over the settings and add form elements.
+        // Iterate over the settings and add course header form elements.
         foreach ($coursesettings as $setting => $config) {
+            // Only process settings that start with "courseheader".
+            if (strpos($setting, 'courseheader') !== 0) {
+                continue;
+            }
+
             $overridesetting = get_config('theme_boost_union', $setting . '_courseoverride');
             if ($overridesetting && isset($config['options']) && is_array($config['options'])) {
                 $formfieldname = 'theme_boost_union_' . $setting;
@@ -175,7 +181,7 @@ class after_form_definition {
                 $mform->addElement($courseimagesheader);
             }
 
-            // Fist of all, move the core course overview files filemanager to this section if it exists and the insert-before
+            // First of all, move the core course overview files filemanager to this section if it exists and the insert-before
             // header was found as well.
             if ($mform->elementExists('overviewfiles_filemanager') && $courseheaderinsertbefore) {
                 // Get the existing element.
@@ -236,6 +242,46 @@ class after_form_definition {
                 $hideifconfig['element'],
                 $hideifconfig['condition'],
                 $hideifconfig['value']
+            );
+        }
+
+        // Part 3: 'Section 0' section.
+
+        // Check if we should show this section at all.
+        $showsection0 = false;
+        foreach ($coursesettings as $setting => $config) {
+            $overridesetting = get_config('theme_boost_union', $setting . '_courseoverride');
+            if ($overridesetting) {
+                $showsection0 = true;
+                break; // We only need to know if at least one is enabled.
+            }
+        }
+
+        // Add course images section, if needed.
+        if ($showsection0) {
+            // Header: Section 0.
+            $section0header = $mform->createElement(
+                'header',
+                'theme_boost_union_course_section0hdr',
+                get_string('section0heading', 'theme_boost_union')
+            );
+
+            $mform->insertElementBefore($section0header, THEME_BOOST_UNION_COURSESETTINGS_SECTION0BEHAVIOUR_INSERTBEFORE);
+
+            // Get section 0 behaviour options.
+            $section0behaviouroptions = coursesettings::get_section0behaviour_options();
+            $section0behaviourselect = $mform->createElement(
+                'select',
+                'theme_boost_union_section0behaviour',
+                get_string('section0behaviour', 'theme_boost_union'),
+                $section0behaviouroptions
+            );
+
+            $mform->insertElementBefore($section0behaviourselect, THEME_BOOST_UNION_COURSESETTINGS_SECTION0BEHAVIOUR_INSERTBEFORE);
+            $mform->addHelpButton(
+                'theme_boost_union_section0behaviour',
+                'section0behaviour',
+                'theme_boost_union'
             );
         }
     }
