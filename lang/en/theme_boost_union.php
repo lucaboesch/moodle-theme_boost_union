@@ -978,6 +978,18 @@ $string['showsitehomerighthandblockdraweronfirstloginsetting_desc'] = 'With this
 $string['showsitehomerighthandblockdraweronguestloginsetting'] = 'Show right-hand block drawer of site home on guest login';
 $string['showsitehomerighthandblockdraweronguestloginsetting_desc'] = 'With this setting, the right-hand block drawer of site home will be displayed in its expanded state by default. This only applies to users who log in as a guest.';
 
+// Settings: Course tab.
+// ... Section: Section 0 heading.
+$string['section0heading'] = 'Section 0 ("General")';
+
+// ... ... Setting: Section 0 behaviour.
+$string['section0behaviour'] = 'Section 0 behaviour';
+$string['section0behaviour_desc'] = 'With this setting, you control the layout of the first section of a course which usually has the name "General" (also called "Section 0").';
+$string['section0behaviour_help'] = 'The behaviour of the first section of a course which usually has the name "General" (also called "Section 0")';
+$string['section0behaviourstandard'] = 'Show section 0 and allow collapsing (Moodle default)';
+$string['section0behaviouruncollapsible'] = 'Show section 0 but do not allow collapsing';
+$string['section0behaviournotshown'] = 'Do not show section 0 at all';
+
 // Settings: Page layouts tab.
 $string['pagelayoutstab'] = 'Page layouts';
 // ... Section: tool_policy heading.

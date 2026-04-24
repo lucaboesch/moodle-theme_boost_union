@@ -3736,6 +3736,38 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $page->add($tab);
 
 
+        // Tab: Course.
+        $tab = new admin_settingpage(
+            'theme_boost_union_feel_course',
+            get_string('coursetab', 'theme_boost_union', null, true)
+        );
+
+        // Heading: Section 0 ("General").
+        $name = 'theme_boost_union/section0heading';
+        $title = get_string('section0heading', 'theme_boost_union', null, true);
+        $setting = new admin_setting_heading($name, $title, null);
+        $tab->add($setting);
+
+
+        // Setting: Section 0 behaviour.
+        $name = 'theme_boost_union/section0behaviour';
+        $title = get_string('section0behaviour', 'theme_boost_union', null, true);
+        $description = get_string('section0behaviour_desc', 'theme_boost_union', null, true);
+        $section0behaviouroptions = coursesettings::get_section0behaviour_options();
+        $setting = new theme_boost_union\admin_setting_configselect_with_courseoverride(
+            $name,
+            $title,
+            $description,
+            THEME_BOOST_UNION_SETTING_SECTION0BEHAVIOUR_STANDARD,
+            $section0behaviouroptions,
+            true
+        );
+        $setting->set_updatedcallback('theme_boost_union_purge_courseoverrides_cache');
+        $tab->add($setting);
+
+        // Add tab to settings page.
+        $page->add($tab);
+
         // Tab: Page layouts.
         $tab = new admin_settingpage(
             'theme_boost_union_feel_pagelayouts',
